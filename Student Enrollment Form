@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Enrollment Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Student Enrollment Form</h1>
+    <form id="enrollmentForm" action="#" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+            <label for="course">Course Selection:</label>
+            <select id="course" name="course" required>
+                <option value="">Select a course</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Data Science">Data Science</option>
+                <option value="UX/UI Design">UX/UI Design</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var course = document.getElementById('course').value;
+
+            var phoneRegex = /^[0-9]{10}$/;
+
+            if (name.trim() == '' || email.trim() == '' || phone.trim() == '' || course == '') {
+                alert('Please fill out all required fields.');
+                return false;
+            }
+
+            if (!phoneRegex.test(phone)) {
+                alert('Please enter a valid phone number.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
